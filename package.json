@@ -1,0 +1,18 @@
+{
+  "name": "aframe-modelica-model",
+  "version": "1.0.0",
+  "description": "aframe-modelica-model",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": "caepackages/aframe-modelica-model",
+  "keywords": [
+  ],
+  "author": "Frank Rettig",
+  "license": "LicenseRef-LICENSE",
+  "bugs": {
+  },
+  "dependencies": {},
+  "devDependencies": {
+  }
+}
