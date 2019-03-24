@@ -13,7 +13,9 @@
   "bugs": {
   },
   "dependencies": {
-    "three-modelica-shape" : "latest"
+    "three-modelica-shape" : ">=1.0.0",
+    "three-stl-loader" : "latest",
+    "aframe" : ">=0.7.0",
   },
   "devDependencies": {
   }
