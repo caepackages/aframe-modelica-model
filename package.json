@@ -15,7 +15,9 @@
   "license": "LicenseRef-LICENSE",
   "bugs": {
   },
-  "dependencies": {},
+  "dependencies": {
+    "three-modelica-shape" : "latest"
+  },
   "devDependencies": {
   }
 }
