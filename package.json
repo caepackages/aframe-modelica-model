@@ -13,7 +13,7 @@
   "bugs": {
   },
   "dependencies": {
-    "three-modelica-shape" : ">=1.0.0",
+    "three-modelica-shape" : "latest",
     "three-stl-loader" : "latest",
     "aframe" : ">=0.7.0"
   },
