@@ -5,10 +5,7 @@
   "main": "index.js",
   "scripts": {
   },
-  "repository": {
-    "type": "git",
-    "url": "caepackages/aframe-modelica-model",
-  },
+  "repository": "caepackages/aframe-modelica-model",
   "keywords": [
   ],
   "author": "Frank Rettig",
