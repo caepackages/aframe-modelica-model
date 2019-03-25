@@ -1,14 +1,12 @@
 # aframe-modelica-model
 
-## Examples
-
 ## NPM
 
 ```
 npm i aframe-modelica-model
 ```
 
-```javascript and browserify
+```javascript
 // index.js
 require('aframe-modelica-model');
 ```
