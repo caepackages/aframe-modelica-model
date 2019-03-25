@@ -3,7 +3,7 @@
 ## Usage (NPM)
 
 ```
-npm install aframe-modelica-model
+npm i aframe-modelica-model
 ```
 
 ```javascript
