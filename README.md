@@ -25,3 +25,8 @@ require('aframe-modelica-model');
   </body>
 </html>
 ```
+
+## Modelica
+
+ModelicaServices
+https://github.com/caepackages/modelica/ModelicaServices
