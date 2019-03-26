@@ -1,6 +1,6 @@
 {
   "name": "aframe-modelica-model",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "aframe-modelica-model",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,7 @@
   "dependencies": {
     "three-modelica-shape" : "latest",
     "three-stl-loader" : "latest",
-    "aframe" : ">=0.7.0"
+    "aframe" : "0.8.2"
   },
   "devDependencies": {
   }
