@@ -7,8 +7,14 @@ npm i aframe-modelica-model
 ```
 
 ```javascript
-// index.js
+// main.js
 require('aframe-modelica-model');
+```
+
+## Browserify
+
+```
+browserify main.js -o bundle.js
 ```
 
 ## HTML
