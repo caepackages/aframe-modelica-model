@@ -13,7 +13,7 @@ require('aframe-modelica-model');
 
 ## HTML
 
-```
+```html
 <html>
   <head>
   </head>
