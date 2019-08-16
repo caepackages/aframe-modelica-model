@@ -11,8 +11,8 @@ if (typeof AFRAME === 'undefined') {
 
   AFRAME.registerComponent('aframe-modelica-model', {
     schema: {
-      moaFile: {default: '/animation.moa'},
-      modelicaPath: {default: './tests/assets/'},
+	  source: {type: 'selector'},
+      modelicaPath: {default: './assets/'},
       filePath: {default: './'},
       timeScale: {default: -0.1},
       startTime: {default: 0.0},
@@ -170,7 +170,7 @@ if (typeof AFRAME === 'undefined') {
         }              
       }
 
-      this.loaded = true;
+      this.animate = true;
     },
     
     generateShapeMesh: function (shape) {
@@ -226,7 +226,7 @@ if (typeof AFRAME === 'undefined') {
     },
     
     setFrame: function (frame) {
-      if (this.loaded && frame < this.time.length ) {
+      if (this.animate && frame < this.time.length ) {
         // update orientation
         for( var i = 0; i < this.varOrientation.length; i++)
         {
@@ -310,27 +310,28 @@ if (typeof AFRAME === 'undefined') {
       this.varPosition = [];
       this.varOrientation = [];
       this.varMaterial = [];
-      this.varShape = [];
-      
-      this.loaded = false;
-      
-      this.loaded = false;
-      var client = new XMLHttpRequest();
-      client.open('GET', this.data.moaFile);
-      client.onload = () => {
-        this.process(client.responseText);
+      this.varShape = []; 
+      this.animate = false;
+
+	  if (this.data.source !== null) {
+        this.process(this.data.source.data);
       }
-      client.send();
     },
 
     play: function () {
+      this.animate = true;
+    },
+
+    pause: function () {
+      this.animate = false;
     },
 
     remove: function () {
+      this.el.removeObject3D('mesh');
     },
 
     tick: function (time) {
-      if ( this.loaded ) {
+      if ( this.animate ) {
         var simulationTime = (time - this.data.startTime);
         
         var timeElapsedNormalized = ( time * 0.001 - this.data.startTime ) * this.data.timeScale / (this.time[this.time.length - 1] - this.time[0]) % 1
