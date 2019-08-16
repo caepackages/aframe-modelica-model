@@ -1,6 +1,6 @@
 {
   "name": "aframe-modelica-model",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "aframe-modelica-model",
   "main": "index.js",
   "scripts": {
