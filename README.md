@@ -26,11 +26,9 @@ browserify main.js -o bundle.js
     <script src="bundle.js"></script>  
   <body>
     <a-scene background= "color:white;transparent:true">
-	
-		<a-assets>
-			<a-asset-item id="moa" src="animation.moa"></a-asset-item>
-		</a-assets>
-	
+	<a-assets>
+		<a-asset-item id="moa" src="animation.moa"></a-asset-item>
+	</a-assets>
       <a-entity
         scale = "1 1 1"
         aframe-modelica-model = "source:#moa;timeScale:0.2">
