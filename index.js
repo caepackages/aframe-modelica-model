@@ -32,12 +32,17 @@ if (typeof AFRAME === 'undefined') {
       var root = this.el.object3D;
 
       function parseDataVector (data) {
-        var vecString = data.substring(1, data.length - 3).split(",")
-        var vec = [];
-        for(var j = 0; j < vecString.length; j++)
-        {
-          vec.push(parseFloat(vecString[j]));
-        }
+        var vec = [];		
+		var a = data.indexOf("(")
+		var b = data.indexOf(")") 
+		
+		if (a > -1 && b > -1) {
+			var vecString = data.substring(a + 1, b - 1).split(",")
+			for( var j = 0; j < vecString.length; j++)
+			{
+			  vec.push(parseFloat(vecString[j]));
+			}
+		}
         return vec;
       };
       
@@ -54,15 +59,33 @@ if (typeof AFRAME === 'undefined') {
         }
         return true;
       };
-                  
+                  	  
       for( var i = 0; i < lines.length; i++)
       {
         var line = lines[i];
         if (i == 0) {
-          this.header = JSON.parse(line.replace(new RegExp("'", 'g'), '"'));
+			var a = line.indexOf("{")
+			var b = line.indexOf("}") 
+
+			if (a > -1 && b > -1) {
+				var list = line.substring(a + 1, b - 1).split(",")
+			
+				for (var k = 0; k < list.length; k += 1) {
+					var key = list[k].split(":")[0].split("'")[1]
+					var value = list[k].split(":")[1]
+					
+					if (value.split("'").length > 1) {
+						value = value.split("'")[1]
+					} else {
+						value = parseFloat(value)
+					}
+					this.header[key] = value					
+				}
+			}
         } else {
        
           index += 1;
+
           if (line.startsWith("'")) {          
             // save previous shape
             if ('shape' in shapeData) {     
@@ -103,8 +126,8 @@ if (typeof AFRAME === 'undefined') {
             }
             
             index = 0;
-            shape = line.substring(1, line.length - 2);
-           
+			shape = line.split("'")[1]
+			
             if ( shapeTypes.indexOf(shape) > -1 || shape.startsWith('THREE.')) {
               state = 'shape';
               shapeData = {'shape': shape};
@@ -132,12 +155,13 @@ if (typeof AFRAME === 'undefined') {
           }
         }
       }
-      
+	  
       if ('shape' in shapeData) {     
         if (state == 'shape') {
           var moShape = this.generateShapeMesh(shapeData);              
           root.add( moShape );
           this.processShape(shapeData, moShape);
+		  
         } else if (state == 'cad') {
           var loader = new STLLoader();
           var transparency = 0.0;
@@ -332,6 +356,7 @@ if (typeof AFRAME === 'undefined') {
 
     tick: function (time) {
       if ( this.animate ) {
+		  
         var simulationTime = (time - this.data.startTime);
         
         var timeElapsedNormalized = ( time * 0.001 - this.data.startTime ) * this.data.timeScale / (this.time[this.time.length - 1] - this.time[0]) % 1
@@ -339,7 +364,7 @@ if (typeof AFRAME === 'undefined') {
         if ( timeElapsedNormalized < 0.0) {
           timeElapsedNormalized += 1.0;
         }
-        
+		 
         var f = Math.round((this.time.length - 1) * timeElapsedNormalized);
         this.setFrame (f);
       }
