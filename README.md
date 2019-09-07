@@ -30,7 +30,8 @@ browserify main.js -o bundle.js
 		<a-asset-item id="moa" src="animation.moa"></a-asset-item>
 	</a-assets>
       <a-entity
-        scale = "1 1 1"
+        position = "0 1.5 0"
+        scale = "0.2 0.2 0.2"
         aframe-modelica-model = "source:#moa;timeScale:0.2">
       </a-entity>
     </a-scene>
