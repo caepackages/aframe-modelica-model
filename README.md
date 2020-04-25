@@ -51,5 +51,5 @@ https://github.com/caepackages/modelica/
 
 ## License
 ```
-(c) Copyright 2020 Frank Rettig, all rights reserved.
+(c) Copyright 2020 Edith Rettig, all rights reserved.
 ```
